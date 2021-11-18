@@ -21,11 +21,11 @@ namespace ParaKafe
         public AnaForm()
         {
             InitializeComponent();
-            MasalariOlustur();
 
             // Adım 35
             // Açılışta kaydetmiş olduğumuz verileri okuttuk 
             VerileriOku();
+            MasalariOlustur();
         }
 
         private void OrnekUrunleriYukle()
