@@ -12,7 +12,7 @@ namespace ParaKafe.Data
 
         public SiparisDurum Durum { get; set; }
 
-        public decimal OdenecekTutar { get; set; }
+        public decimal OdenenTutar { get; set; }
 
         public DateTime? AcilisZamani { get; set; } = DateTime.Now;
 

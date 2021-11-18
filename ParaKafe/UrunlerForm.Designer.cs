@@ -47,7 +47,7 @@ namespace ParaKafe
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(84, 24);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Ürün Adı";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -57,7 +57,7 @@ namespace ParaKafe
             this.txtUrunAd.Location = new System.Drawing.Point(17, 44);
             this.txtUrunAd.Name = "txtUrunAd";
             this.txtUrunAd.Size = new System.Drawing.Size(129, 29);
-            this.txtUrunAd.TabIndex = 0;
+            this.txtUrunAd.TabIndex = 2;
             // 
             // label2
             // 
@@ -67,7 +67,7 @@ namespace ParaKafe
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 24);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 1;
             this.label2.Text = "Birim Fiyatı (₺)";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -83,7 +83,7 @@ namespace ParaKafe
             0});
             this.nudBirimFiyat.Name = "nudBirimFiyat";
             this.nudBirimFiyat.Size = new System.Drawing.Size(120, 29);
-            this.nudBirimFiyat.TabIndex = 1;
+            this.nudBirimFiyat.TabIndex = 3;
             // 
             // btnEkle
             // 
@@ -91,20 +91,24 @@ namespace ParaKafe
             this.btnEkle.Location = new System.Drawing.Point(309, 44);
             this.btnEkle.Name = "btnEkle";
             this.btnEkle.Size = new System.Drawing.Size(98, 29);
-            this.btnEkle.TabIndex = 2;
+            this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "EKLE";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // dgvUrunler
             // 
+            this.dgvUrunler.AllowUserToAddRows = false;
             this.dgvUrunler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvUrunler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUrunler.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvUrunler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUrunler.Location = new System.Drawing.Point(17, 92);
             this.dgvUrunler.Name = "dgvUrunler";
             this.dgvUrunler.Size = new System.Drawing.Size(591, 427);
-            this.dgvUrunler.TabIndex = 3;
+            this.dgvUrunler.TabIndex = 5;
             // 
             // UrunlerForm
             // 

@@ -29,6 +29,7 @@ namespace ParaKafe
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cboMasaNo = new System.Windows.Forms.ComboBox();
             this.cboUrun = new System.Windows.Forms.ComboBox();
             this.nudAdet = new System.Windows.Forms.NumericUpDown();
@@ -44,6 +45,10 @@ namespace ParaKafe
             this.label5 = new System.Windows.Forms.Label();
             this.btnOdemeAl = new System.Windows.Forms.Button();
             this.lblOdemeTutari = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudAdet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSiparisDetaylar)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +110,7 @@ namespace ParaKafe
             this.btnEkle.TabIndex = 4;
             this.btnEkle.Text = "EKLE";
             this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // btnAnasayfayaDon
             // 
@@ -119,6 +125,7 @@ namespace ParaKafe
             this.btnAnasayfayaDon.TabIndex = 14;
             this.btnAnasayfayaDon.Text = "ANASAYFAYA DÖN";
             this.btnAnasayfayaDon.UseVisualStyleBackColor = false;
+            this.btnAnasayfayaDon.Click += new System.EventHandler(this.btnAnasayfayaDon_Click);
             // 
             // btnSiparisIptal
             // 
@@ -133,16 +140,28 @@ namespace ParaKafe
             this.btnSiparisIptal.TabIndex = 12;
             this.btnSiparisIptal.Text = "SİPARİŞ İPTAL";
             this.btnSiparisIptal.UseVisualStyleBackColor = false;
+            this.btnSiparisIptal.Click += new System.EventHandler(this.btnSiparisIptal_Click);
             // 
             // dgvSiparisDetaylar
             // 
+            this.dgvSiparisDetaylar.AllowUserToAddRows = false;
             this.dgvSiparisDetaylar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSiparisDetaylar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvSiparisDetaylar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvSiparisDetaylar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSiparisDetaylar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
             this.dgvSiparisDetaylar.Location = new System.Drawing.Point(17, 78);
             this.dgvSiparisDetaylar.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvSiparisDetaylar.MultiSelect = false;
             this.dgvSiparisDetaylar.Name = "dgvSiparisDetaylar";
+            this.dgvSiparisDetaylar.ReadOnly = true;
+            this.dgvSiparisDetaylar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvSiparisDetaylar.Size = new System.Drawing.Size(594, 477);
             this.dgvSiparisDetaylar.TabIndex = 5;
             // 
@@ -235,6 +254,7 @@ namespace ParaKafe
             this.btnOdemeAl.TabIndex = 13;
             this.btnOdemeAl.Text = "ÖDEME AL";
             this.btnOdemeAl.UseVisualStyleBackColor = false;
+            this.btnOdemeAl.Click += new System.EventHandler(this.btnOdemeAl_Click);
             // 
             // lblOdemeTutari
             // 
@@ -248,6 +268,36 @@ namespace ParaKafe
             this.lblOdemeTutari.TabIndex = 11;
             this.lblOdemeTutari.Text = "0.00₺";
             this.lblOdemeTutari.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "UrunAd";
+            this.Column1.HeaderText = "Ürün Adı";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "BirimFiyat";
+            dataGridViewCellStyle1.Format = "0.00₺";
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column2.HeaderText = "Birim Fiyatı";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Adet";
+            this.Column3.HeaderText = "Adet";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "TutarTL";
+            this.Column4.HeaderText = "Tutar";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // SiparisForm
             // 
@@ -298,5 +348,9 @@ namespace ParaKafe
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnOdemeAl;
         private System.Windows.Forms.Label lblOdemeTutari;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

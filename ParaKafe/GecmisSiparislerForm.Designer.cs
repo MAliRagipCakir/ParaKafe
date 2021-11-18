@@ -30,10 +30,10 @@ namespace ParaKafe
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.dgvSiparisler = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvSiparisDetaylar = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -65,6 +65,26 @@ namespace ParaKafe
             this.splitContainer1.SplitterDistance = 303;
             this.splitContainer1.TabIndex = 0;
             // 
+            // dgvSiparisler
+            // 
+            this.dgvSiparisler.AllowUserToAddRows = false;
+            this.dgvSiparisler.AllowUserToDeleteRows = false;
+            this.dgvSiparisler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSiparisler.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvSiparisler.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvSiparisler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSiparisler.Location = new System.Drawing.Point(0, 36);
+            this.dgvSiparisler.MultiSelect = false;
+            this.dgvSiparisler.Name = "dgvSiparisler";
+            this.dgvSiparisler.ReadOnly = true;
+            this.dgvSiparisler.RowHeadersVisible = false;
+            this.dgvSiparisler.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSiparisler.Size = new System.Drawing.Size(808, 267);
+            this.dgvSiparisler.TabIndex = 1;
+            this.dgvSiparisler.SelectionChanged += new System.EventHandler(this.dgvSiparisler_SelectionChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -75,6 +95,25 @@ namespace ParaKafe
             this.label1.TabIndex = 0;
             this.label1.Text = "Siparişler";
             // 
+            // dgvSiparisDetaylar
+            // 
+            this.dgvSiparisDetaylar.AllowUserToAddRows = false;
+            this.dgvSiparisDetaylar.AllowUserToDeleteRows = false;
+            this.dgvSiparisDetaylar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvSiparisDetaylar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvSiparisDetaylar.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvSiparisDetaylar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSiparisDetaylar.Location = new System.Drawing.Point(0, 41);
+            this.dgvSiparisDetaylar.MultiSelect = false;
+            this.dgvSiparisDetaylar.Name = "dgvSiparisDetaylar";
+            this.dgvSiparisDetaylar.ReadOnly = true;
+            this.dgvSiparisDetaylar.RowHeadersVisible = false;
+            this.dgvSiparisDetaylar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvSiparisDetaylar.Size = new System.Drawing.Size(808, 259);
+            this.dgvSiparisDetaylar.TabIndex = 1;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -84,28 +123,6 @@ namespace ParaKafe
             this.label2.Size = new System.Drawing.Size(142, 24);
             this.label2.TabIndex = 0;
             this.label2.Text = "Sipariş Detayları";
-            // 
-            // dgvSiparisler
-            // 
-            this.dgvSiparisler.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSiparisler.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSiparisler.Location = new System.Drawing.Point(0, 36);
-            this.dgvSiparisler.Name = "dgvSiparisler";
-            this.dgvSiparisler.Size = new System.Drawing.Size(808, 267);
-            this.dgvSiparisler.TabIndex = 1;
-            // 
-            // dgvSiparisDetaylar
-            // 
-            this.dgvSiparisDetaylar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvSiparisDetaylar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSiparisDetaylar.Location = new System.Drawing.Point(0, 41);
-            this.dgvSiparisDetaylar.Name = "dgvSiparisDetaylar";
-            this.dgvSiparisDetaylar.Size = new System.Drawing.Size(808, 259);
-            this.dgvSiparisDetaylar.TabIndex = 1;
             // 
             // GecmisSiparislerForm
             // 
