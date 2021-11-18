@@ -23,7 +23,8 @@ namespace ParaKafe
             InitializeComponent();
             MasalariOlustur();
 
-            // Adım 34
+            // Adım 35
+            // Açılışta kaydetmiş olduğumuz verileri okuttuk 
             VerileriOku();
         }
 
@@ -46,9 +47,9 @@ namespace ParaKafe
                 lvi.ImageKey = db.AktifSiparisler.Any(x => x.MasaNo == i) ? "dolu" : "bos";
                 lvwMasalar.Items.Add(lvi);
 
-                // Adım 35
+                // Adım 36
                 // json ile verileri kaydedip çekme işleminde dolu masanın ımageKey i de beraberinde gelsin diye alttaki satırı yukardaki haliyle değiştirdik
-                // lvi.ImageKey = "bos";
+                // lvi.ImageKey = "bos"; ===> lvi.ImageKey = db.AktifSiparisler.Any(x => x.MasaNo == i) ? "dolu" : "bos";
             }
         }
 
@@ -59,9 +60,11 @@ namespace ParaKafe
             ListViewItem lvi = lvwMasalar.SelectedItems[0];
             int no = (int)lvi.Tag;
 
+            // Adım 03.1
             // Daha önceden bu masa Numarasına açılan bir sipariş var mı onu kontrol ettik(FirstOrDefault şartı sağlıyanı ilk gördüğünü, hiç yoksa default bu durumda null)
             Siparis siparis = db.AktifSiparisler.FirstOrDefault(x => x.MasaNo == no);
 
+            // Adım 03.2
             // siparis'in null olması durumunda yeni bi siparis açıyoruz ve AktifSiparislere bu siparisi ekliyoruz
             // Masanın ImageKey ini de "dolu" olarak adlandırdığımız resim ile değiştirdik
             if (siparis == null)
@@ -71,6 +74,7 @@ namespace ParaKafe
                 lvi.ImageKey = "dolu";
             }
 
+            // Adım 03.3
             // SiparisForm u açarak, açtığımız siparisi(yada mevcut olan siparisi) ve KafeVeri db imizi yeni forma gönderdik
             SiparisForm sf = new SiparisForm(siparis, db);
             sf.ShowDialog();
@@ -102,28 +106,34 @@ namespace ParaKafe
         private void AnaForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // Adım 32
+            // Form kapanırken verileri Json ile kaydedebilmek için bu eventi oluşturduk
             VerileriKaydet();
         }
 
         private void VerileriKaydet()
         {
             // Adım 33
+            // Tools -> NuGet Package Manager -> Manage NuGet Packages for Solution yolundan json ı ParaKafe projemize ekledik
+            // tüm listeleri tutan KafeVeri classından oluşturduğumuz db yi json ile bir dosyaya yazdırdık
             string json = JsonConvert.SerializeObject(db);
             File.WriteAllText("veri.json", json);
         }
 
         private void VerileriOku()
         {
-            // Adım 35
+            // Adım 34
+            // Dosya hiç oluşturulmamışsa veya bozulmuşsa diye hata almamak için try catch yaptık
             try
             {
-                // Adım 35.1
+                // Adım 34.1
+                // Dosya varsa ve okunabiliyorsa KafeVeri türünde açarak db ye atadık
                 string json = File.ReadAllText("veri.json");
                 db = JsonConvert.DeserializeObject<KafeVeri>(json);
             }
             catch (Exception)
             {
-                // Adım 35.2
+                // Adım 34.2
+                // Dosya bozuksa veya hiç oluşturulmamışsa 0'dan yeni db oluşturarak içinde birkaç örnek ürün oluşturduğumuz metodu çağırdık
                 db = new KafeVeri();
                 OrnekUrunleriYukle();
             }
