@@ -16,6 +16,9 @@ namespace ParaKafe
         private readonly Siparis siparis;
         private readonly KafeVeri db;
 
+        // Adım 41
+        public event EventHandler<MasaTasindiEventArgs> MasaTasindi;
+
         // Adım 07
         // dgv e atmak ve devamlı güncellemek zorunda kalmamak için BL oluşturduk
         private readonly BindingList<SiparisDetay> blDetaylar;
@@ -72,8 +75,18 @@ namespace ParaKafe
         {
             // Adım 05
             // Formun Text ini ve forma gösterdiğimiz büyük label ın textini siparisin MasaNo sundan aldık
-            Text = $"Masa {siparis.MasaNo}";
+            Text = $"Masa {siparis.MasaNo}  (Açılış: {siparis.AcilisZamani})";
             lblMasaNo.Text = siparis.MasaNo.ToString("00");
+
+            // Adım 37
+            // Masa taşıyabilmek için boş masaNo ları cboMasano ya ekledik
+            // Bos masaNoları alabilmek için aktif siparislerdeki masaNo ları bir diziye atıp sonrasında, Enumerable Range ile 1'den toplam masa adeti kadar numara içinden bu dizide olmayanları yani bos olanları çektik
+            int[] doluMasalar = db.AktifSiparisler.Select(x => x.MasaNo).ToArray();
+            cboMasaNo.DataSource = Enumerable
+                .Range(1, db.MasaAdet)
+                .Where(x=> !doluMasalar.Contains(x))
+                .ToList();
+
         }
 
         private void UrunleriListele()
@@ -129,6 +142,23 @@ namespace ParaKafe
             db.AktifSiparisler.Remove(siparis);
             db.GecmisSiparisler.Add(siparis);
             Close();
+        }
+
+        private void btnMasaTasi_Click(object sender, EventArgs e)
+        {
+            // Adım 38
+            if (cboMasaNo.SelectedIndex == -1) return;
+
+            // Adım 39
+            int eskiMasaNo = siparis.MasaNo;
+            int hedefMasaNo = (int)cboMasaNo.SelectedItem;
+            siparis.MasaNo = hedefMasaNo;
+            MasaNoyuGuncelle();
+
+            // Adım 42
+            if (MasaTasindi != null)
+                MasaTasindi(this, new MasaTasindiEventArgs(eskiMasaNo, hedefMasaNo));
+            
         }
     }
 }

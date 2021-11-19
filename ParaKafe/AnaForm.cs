@@ -77,6 +77,8 @@ namespace ParaKafe
             // Adım 03.3
             // SiparisForm u açarak, açtığımız siparisi(yada mevcut olan siparisi) ve KafeVeri db imizi yeni forma gönderdik
             SiparisForm sf = new SiparisForm(siparis, db);
+            // Adım 42
+            sf.MasaTasindi += Sf_MasaTasindi;
             sf.ShowDialog();
 
 
@@ -85,8 +87,18 @@ namespace ParaKafe
             // bizde bunu sf.ShowDialog() altında yaparak gelen durumu kontrol ettik
             if (siparis.Durum != SiparisDurum.Aktif)
                 lvi.ImageKey = "bos";
+            
 
+        }
 
+        //Adım 43
+        private void Sf_MasaTasindi(object sender, MasaTasindiEventArgs e)
+        {
+            foreach (ListViewItem lvi in lvwMasalar.Items)
+            {
+                if ((int)lvi.Tag == e.EskiMasaNo) lvi.ImageKey = "bos";
+                if ((int)lvi.Tag == e.YeniMasaNo) lvi.ImageKey = "dolu";
+            }
         }
 
         private void tsmiGecmisSiparisler_Click(object sender, EventArgs e)
